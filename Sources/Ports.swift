@@ -1,8 +1,8 @@
-enum Port {
+enum Port: String {
     case LEFT, RIGHT, UP, DOWN, ANY, LAST
-    // TODO: needs a way to store reference to another node here
-    // as dict maybe?
 }
+
+extension Port: SourceRepresentable, DestinationRepresentable {}
 
 struct Ports {
     let LEFT: Node? // is a Node just a Readable/Writable type?
