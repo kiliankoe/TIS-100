@@ -1,15 +1,20 @@
 import XCTest
-@testable import tis_100
+@testable import TIS_100
 
-class tis_100Tests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        XCTAssertEqual(tis_100().text, "Hello, World!")
+struct MockParserDelegate: CommandParserDelegate {
+    func index(for label: String) -> UInt? {
+        return 0
+    }
+}
+
+class CommandTests: XCTestCase {
+    func testParsing() {
+        let delegate = MockParserDelegate()
+        XCTAssertEqual(Command.NOP, Command(with: "", delegate: delegate)!)
     }
 
 
     static var allTests = [
-        ("testExample", testExample),
+        ("testParsing", testParsing),
     ]
 }
